@@ -1,3 +1,4 @@
+mod dashboard 'dashboard/dashboard.just'
 mod detector 'detector/detector.just'
 
 # ------------------------------------------------------------------------------
@@ -19,11 +20,13 @@ prettier-format:
 # Format the Just code
 format:
     just --fmt --unstable
+    just --fmt --unstable --justfile dashboard/dashboard.just
     just --fmt --unstable --justfile detector/detector.just
 
 # Check for Just format issues
 format-check:
     just --fmt --check --unstable
+    just --fmt --check --unstable --justfile dashboard/dashboard.just
     just --fmt --check --unstable --justfile detector/detector.just
 
 # ------------------------------------------------------------------------------
