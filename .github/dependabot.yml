@@ -26,3 +26,15 @@ updates:
       python:
         patterns:
           - "*"
+
+  - package-ecosystem: "npm"
+    directory: "dashboard"
+    commit-message:
+      prefix: "deps(typescript)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    groups:
+      typescript:
+        patterns:
+          - "*"
