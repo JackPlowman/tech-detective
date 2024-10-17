@@ -66,6 +66,9 @@
   name: end_to_end_tests
   description: Pull requests that update end to end tests
 # Components
+- color: f9d0c4
+  name: detector
+  description: Pull requests that update detector code
 - color: f27100
   name: dashboard
   description: Pull requests that update dashboard code
