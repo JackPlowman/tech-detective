@@ -1,0 +1,8 @@
+{
+  "ruff.configuration": "detector/pyproject.toml",
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  }
+}
