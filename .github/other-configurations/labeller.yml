@@ -16,7 +16,14 @@ typescript:
   - any:
       - changed-files:
           - any-glob-to-any-file:
-              ["*.ts", "*.tsx", "**/*.ts", "**/*.tsx", "**/tsconfig.json"]
+              [
+                "*.ts",
+                "*.tsx",
+                "**/*.ts",
+                "**/*.tsx",
+                "**/tsconfig.json",
+                "**/**.astro",
+              ]
 just:
   - any:
       - changed-files:
