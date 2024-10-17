@@ -11,7 +11,7 @@ runs:
     - name: Install Python 3.13 with Poetry Cache
       uses: actions/setup-python@v5
       with:
-        python-version-file: "pyproject.toml"
+        python-version-file: "detector/pyproject.toml"
         cache: "poetry"
 
     - name: Set up Just
@@ -19,4 +19,4 @@ runs:
 
     - name: Install Poetry Dependencies
       shell: bash
-      run: just install
+      run: just detector::install
