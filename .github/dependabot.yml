@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
-      - ".github/actions/setup-dependencies"
+      - ".github/actions/setup-python-dependencies"
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
@@ -16,7 +16,7 @@ updates:
           - "*"
 
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "detector"
     commit-message:
       prefix: "deps(python)"
     schedule:
