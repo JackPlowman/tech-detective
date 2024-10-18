@@ -6,9 +6,23 @@
 install:
     npm install
 
+# Install Node Dependencies in CI
+ci-install:
+    npm ci
+
 # Start the development server
 dev:
     npm run dev
+
+# ------------------------------------------------------------------------------
+# Eslint
+# ------------------------------------------------------------------------------
+
+eslint-check:
+    npx eslint .
+
+eslint-fix:
+    npx eslint . --fix
 
 # ------------------------------------------------------------------------------
 # Prettier
