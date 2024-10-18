@@ -1,4 +1,6 @@
 {
+  "name": "dashboard",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -8,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "4.16.5",
+    "astro": "4.16.6",
     "typescript": "5.6.3"
   },
   "devDependencies": {
@@ -18,5 +20,9 @@
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1"
+  },
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=22.8.0"
   }
 }
