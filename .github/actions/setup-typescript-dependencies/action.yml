@@ -1,0 +1,19 @@
+name: "Setup Dependencies"
+description: "Installs dependencies for the project"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: "dashboard/package.json"
+        cache: "npm"
+        cache-dependency-path: "dashboard/package-lock.json"
+
+    - name: Set up Just
+      uses: extractions/setup-just@v2
+
+    - name: Install Node Dependencies
+      shell: bash
+      run: just dashboard::ci-install

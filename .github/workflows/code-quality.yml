@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Dependencies
+      - name: Setup Python Dependencies
         uses: ./.github/actions/setup-python-dependencies
 
       - name: Check Python Code Quality (Ruff)
@@ -79,18 +79,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: "dashboard/package.json"
-          cache: "npm"
-          cache-dependency-path: "dashboard/package-lock.json"
-
-      - name: Set up Just
-        uses: extractions/setup-just@v2
-
-      - name: Install Node Dependencies
-        run: just dashboard::ci-install
+      - name: Setup TypeScript Dependencies
+        uses: ./.github/actions/setup-typescript-dependencies
 
       - name: Run Prettier
         run: just dashboard::prettier-check

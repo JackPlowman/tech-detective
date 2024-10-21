@@ -5,6 +5,7 @@ updates:
     directories:
       - "/"
       - ".github/actions/setup-python-dependencies"
+      - ".github/actions/setup-typescript-dependencies"
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
