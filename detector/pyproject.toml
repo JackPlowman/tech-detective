@@ -5,6 +5,7 @@ package-mode = false
 python = "^3.13"
 structlog = "24.4.0"
 poetry = "1.8.4"
+pygithub = "2.4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.6.9"
