@@ -16,6 +16,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.1
+
+      - name: Setup Python Dependencies
+        uses: ./.github/actions/setup-python-dependencies
+
+      - name: Run Detector
+        run: just detector::run
+
       - name: Install, build, and upload site
         uses: withastro/action@v3.0.0
         with:
