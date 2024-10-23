@@ -24,6 +24,7 @@ jobs:
         run: just detector::run
         env:
           FORCE_COLOR: "true" # Force log colour output
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
       - name: Install, build, and upload site
         uses: withastro/action@v3.0.0
