@@ -22,6 +22,8 @@ jobs:
 
       - name: Run Detector
         run: just detector::run
+        env:
+          FORCE_COLOR: "true" # Force log colour output
 
       - name: Install, build, and upload site
         uses: withastro/action@v3.0.0
