@@ -6,8 +6,13 @@
 install:
     poetry install
 
+# Run the application
 run:
     poetry run python -m application
+
+# Runs unit tests
+unit-test:
+    poetry run pytest application
 
 # ------------------------------------------------------------------------------
 # Cleaning Commands
