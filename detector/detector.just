@@ -12,7 +12,7 @@ run:
 
 # Runs unit tests
 unit-test:
-    poetry run pytest application
+    poetry run pytest application --cov=. --cov-report=xml
 
 # ------------------------------------------------------------------------------
 # Cleaning Commands
