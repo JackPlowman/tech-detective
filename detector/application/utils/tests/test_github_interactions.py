@@ -1,6 +1,8 @@
 from unittest.mock import MagicMock, call, patch
 
-from detector.application.utils.github_interactions import retrieve_repositories
+from github import GithubException
+
+from detector.application.utils.github_interactions import retrieve_repositories, scrape_technologies
 
 FILE_PATH = "detector.application.utils.github_interactions"
 
@@ -22,3 +24,22 @@ def test_retrieve_repositories(mock_getenv: MagicMock, mock_github: MagicMock) -
     mock_getenv.assert_has_calls([call("GITHUB_REPOSITORY_OWNER")])
     assert repositories == search_return
     # Cleanup
+
+
+def test_scrape_technologies() -> None:
+    # Arrange
+    mock_repository = MagicMock(full_name="Test3/Test4")
+    # Act
+    response = scrape_technologies(mock_repository)
+    # Assert
+    assert response == []
+
+
+def test_scrape_technologies_no_files_found() -> None:
+    # Arrange
+    mock_repository = MagicMock(full_name="Test3/Test4")
+    mock_repository.get_contents.side_effect = GithubException(status=404)
+    # Act
+    response = scrape_technologies(mock_repository)
+    # Assert
+    assert response == []
