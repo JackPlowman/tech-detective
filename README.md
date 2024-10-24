@@ -18,6 +18,7 @@ The results from the detector are then used to generate a report on the technolo
     - [Dashboard](#dashboard)
     - [Detector](#detector)
   - [Testing](#testing)
+  - [Project Technologies and Frameworks](#project-technologies-and-frameworks)
   - [License](#license)
 
 ## Development
@@ -40,6 +41,16 @@ The results from the detector are then used to generate a report on the technolo
 ## Testing
 
 <!-- TODO: Add testing instructions -->
+
+## Project Technologies and Frameworks
+
+This project uses the following technologies and frameworks:
+
+| Catagory | Technologies and Frameworks                                                                                                                                                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Frontend | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white)                      |
+| Backend  | ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Poetry](https://img.shields.io/badge/poetry-%23150458.svg?style=for-the-badge&logo=poetry&logoColor=white)                                     |
+| CI/CD    | ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) |
 
 ## License
 
