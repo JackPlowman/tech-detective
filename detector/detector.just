@@ -10,6 +10,10 @@ install:
 run:
     poetry run python -m application
 
+# Run the application with defaults
+run-with-defaults:
+    DEBUG=true GITHUB_REPOSITORY_OWNER=JackPlowman just detector::run
+
 # Runs unit tests
 unit-test:
     poetry run pytest application --cov=. --cov-report=xml
