@@ -1,5 +1,6 @@
 mod dashboard 'dashboard/dashboard.just'
 mod detector 'detector/detector.just'
+mod tests 'tests/tests.just'
 
 # ------------------------------------------------------------------------------
 # Prettier - File Formatting
