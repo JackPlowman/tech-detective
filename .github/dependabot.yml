@@ -17,7 +17,9 @@ updates:
           - "*"
 
   - package-ecosystem: "pip"
-    directory: "detector"
+    directories:
+      - "detector"
+      - "tests"
     commit-message:
       prefix: "deps(python)"
     schedule:
