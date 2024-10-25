@@ -34,14 +34,16 @@ def scrape_technologies(repository: Repository) -> list[str]:
     Returns:
         list[str]: The list of technologies used in the repository.
     """
-    expected_files = ["README.md", "Readme.md", "readme.md"]  # Ordered in most common to least common
+    expected_files = [
+        "README.md",
+        "Readme.md",
+        "readme.md",
+    ]  # Ordered in most common to least common
     found_file = False
     for expected_file in expected_files:
         try:
             file = repository.get_contents(expected_file)
-            logger.debug(
-                "Found file", file=file.name, repository=repository.full_name, file_contents=file.decoded_content
-            )
+            logger.debug("Found file", file=file.name, repository=repository.full_name)
             found_file = True
             break
         except GithubException:
@@ -49,5 +51,4 @@ def scrape_technologies(repository: Repository) -> list[str]:
     if not found_file:
         logger.debug("No Readme files found", repository=repository.full_name)
         return []
-    # Scrape the file for technologies here
     return []
