@@ -14,6 +14,7 @@ on:
       ]
 
 permissions:
+  contents: read
   pull-requests: write
 
 jobs:
@@ -35,3 +36,13 @@ jobs:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/other-configurations/labeller.yml
           sync-labels: true
+
+  size-labels:
+    name: Add Size Labels
+    runs-on: ubuntu-latest
+    needs: labeller
+    steps:
+      - name: Add Size Labels
+        uses: pascalgn/size-label-action@v0.5.5
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
