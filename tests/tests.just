@@ -6,8 +6,12 @@
 install:
     poetry install
 
+# Install playwright dependencies
+playwright-install:
+    poetry run playwright install
+
 # End to End Tests
-end_to_end_tests:
+end-to-end-tests:
     poetry run pytest end_to_end
 
 # ------------------------------------------------------------------------------
