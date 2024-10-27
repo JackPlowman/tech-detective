@@ -70,6 +70,24 @@ jobs:
       - name: Check Python Code for Dead Code (Vulture)
         run: just detector::vulture
 
+  check-test-python-code-format-and-quality:
+    name: Check Test Python Code Format and Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python Dependencies
+        uses: ./.github/actions/setup-test-dependencies
+
+      - name: Check Python Code Quality (Ruff)
+        run: just tests::ruff-lint
+
+      - name: Check Python Code Format (Ruff)
+        run: just tests::ruff-format
+
   check-typescript-code-format-and-quality:
     name: Check TypeScript Code Format and Quality
     runs-on: ubuntu-latest
