@@ -1,6 +1,12 @@
 name: "Setup Test Dependencies"
 description: "Installs dependencies for the project"
 
+inputs:
+  install-playwright-dependencies:
+    description: "Install Playwright dependencies"
+    required: false
+    default: "false"
+
 runs:
   using: "composite"
   steps:
@@ -20,3 +26,8 @@ runs:
     - name: Install Poetry Dependencies
       shell: bash
       run: just tests::install
+
+    - name: Install Playwright Dependencies
+      shell: bash
+      if: ${{ inputs.install-playwright-dependencies == 'true' }}
+      run: just tests::playwright-install
