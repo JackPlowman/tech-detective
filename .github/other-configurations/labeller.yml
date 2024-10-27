@@ -40,7 +40,8 @@ github_actions:
 end_to_end_tests:
   - any:
       - changed-files:
-          - any-glob-to-any-file: ["tests/end_to_end/**/*"]
+          - any-glob-to-any-file:
+              ["tests/end_to_end/*", "tests/end_to_end/**/*"]
 detector:
   - any:
       - changed-files:
