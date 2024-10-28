@@ -5,7 +5,6 @@
       "source.fixAll": "explicit"
     }
   },
-
   "python.analysis.inlayHints.pytestParameters": true,
   "files.exclude": {
     ".ruff_cache": true,
@@ -13,5 +12,11 @@
     "**/__pycache__": true,
     "**/.ruff_cache": true,
     "**/.pytest_cache": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "pyproject.toml": "__init__.py, poetry.lock, coverage.xml, .coverage, .gitignore",
+    "package.json": "package-lock.json, eslint.config.js, astro.config.mjs, .prettierrc.mjs, .gitignore"
   }
 }
