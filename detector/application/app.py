@@ -14,7 +14,6 @@ def generate_tech_report() -> str:
         repository for repository in repositories if repository.full_name == "JackPlowman/tech-detective"
     )
     scrape_technologies(tech_detective)
-
     # Reimplement this
     # for repository in repositories:
     #     scrape_technologies(repository) # noqa: ERA001
