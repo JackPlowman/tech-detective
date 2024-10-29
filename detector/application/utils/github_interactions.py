@@ -50,5 +50,4 @@ def scrape_technologies(repository: Repository) -> list[str]:
             logger.debug("No file found", repository=repository.full_name)
     if not found_file:
         logger.debug("No Readme files found", repository=repository.full_name)
-        return []
     return []

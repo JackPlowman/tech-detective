@@ -2,10 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./dashboard/node_modules/.bin/astro dev",
-      "name": "Development server",
+      "name": "Debug Detector",
+      "type": "debugpy",
       "request": "launch",
-      "type": "node-terminal"
+      "module": "application",
+      "cwd": "${workspaceFolder}/detector",
+      "env": {
+        "DEBUG": "true",
+        "GITHUB_REPOSITORY_OWNER": "JackPlowman"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": true
     }
   ]
 }
