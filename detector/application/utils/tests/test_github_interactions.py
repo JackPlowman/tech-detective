@@ -26,13 +26,14 @@ def test_retrieve_repositories(mock_getenv: MagicMock, mock_github: MagicMock) -
     # Cleanup
 
 
-def test_scrape_technologies() -> None:
+@patch(f"{FILE_PATH}.find_technologies_and_frameworks")
+def test_scrape_technologies(mock_find_technologies_and_frameworks: MagicMock) -> None:
     # Arrange
     mock_repository = MagicMock(full_name="Test3/Test4")
     # Act
     response = scrape_technologies(mock_repository)
     # Assert
-    assert response == []
+    assert response == mock_find_technologies_and_frameworks.return_value
 
 
 def test_scrape_technologies_no_files_found() -> None:

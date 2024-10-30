@@ -5,6 +5,8 @@ from os import getenv
 from github import Github, GithubException, PaginatedList, Repository
 from structlog import get_logger, stdlib
 
+from .markdown import find_technologies_and_frameworks
+
 logger: stdlib.BoundLogger = get_logger()
 
 
@@ -36,18 +38,14 @@ def scrape_technologies(repository: Repository) -> list[str]:
     """
     expected_files = [
         "README.md",
-        "Readme.md",
-        "readme.md",
+        "PROJECT_TECHNOLOGIES.md",
     ]  # Ordered in most common to least common
-    found_file = False
     for expected_file in expected_files:
         try:
             file = repository.get_contents(expected_file)
             logger.debug("Found file", file=file.name, repository=repository.full_name)
-            found_file = True
-            break
+            return find_technologies_and_frameworks(file.decoded_content.decode())
         except GithubException:
             logger.debug("No file found", repository=repository.full_name)
-    if not found_file:
-        logger.debug("No Readme files found", repository=repository.full_name)
+    logger.debug("No Readme files found", repository=repository.full_name)
     return []
