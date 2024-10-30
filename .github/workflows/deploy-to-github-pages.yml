@@ -64,6 +64,28 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4.0.5
 
+  schema-validation:
+    name: Validate Schema
+    needs: run-detector
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Detector Dependencies
+        uses: ./.github/actions/setup-test-dependencies
+
+      - name: Download Detector Output File
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: project-technologies-and-frameworks
+          path: tests/schema_validation
+
+      - name: Schema Validation Test
+        run: just tests::validate-schema
+
   end-to-end-test:
     name: Run End to End Tests
     needs: deploy-site
