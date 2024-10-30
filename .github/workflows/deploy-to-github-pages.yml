@@ -11,7 +11,8 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  run-detector:
+    name: Run Detector
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,14 +27,34 @@ jobs:
           FORCE_COLOR: "true" # Force log colour output
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
+      - name: Upload Detector Output File
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          name: project-technologies-and-frameworks
+          path: project_technologies_and_frameworks.json
+
+  build-site:
+    name: Build Site
+    needs: run-detector
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.1
+
+      - name: Download Detector Output File
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: project-technologies-and-frameworks
+
       - name: Install, build, and upload site
         uses: withastro/action@v3.0.0
         with:
           path: dashboard
           node-version: 22
 
-  deploy:
-    needs: build
+  deploy-site:
+    name: Deploy Site
+    needs: build-site
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -42,3 +63,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5
+
+  end-to-end-test:
+    name: Run End to End Tests
+    needs: deploy-site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Dependencies
+        uses: ./.github/actions/setup-test-dependencies
+        with:
+          install-playwright-dependencies: "true"
+
+      - name: Run End to End Tests
+        run: just tests::end-to-end-tests
