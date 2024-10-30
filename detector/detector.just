@@ -44,8 +44,8 @@ clean:
 
 # Fix all Ruff issues
 ruff-fix:
-    just detector::ruff-lint-fix
     just detector::ruff-format-fix
+    just detector::ruff-lint-fix
 
 # Check for Ruff issues
 ruff-lint:
