@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "repositories": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "full_name": {
+              "type": "string"
+            },
+            "project_technologies_and_frameworks": {
+              "type": "array"
+            }
+          },
+          "required": ["full_name", "project_technologies_and_frameworks"]
+        }
+      ]
+    }
+  },
+  "required": ["repositories"]
+}

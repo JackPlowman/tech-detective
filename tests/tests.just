@@ -14,6 +14,10 @@ playwright-install:
 end-to-end-tests:
     poetry run pytest end_to_end
 
+# Validate the schema of the project technologies and frameworks json file
+validate-schema:
+    poetry run check-jsonschema --schemafile schema_validation/project_technologies_and_frameworks_schema.json schema_validation/project_technologies_and_frameworks.json
+
 # ------------------------------------------------------------------------------
 # Cleaning Commands
 # ------------------------------------------------------------------------------
