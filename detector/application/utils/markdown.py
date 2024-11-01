@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from re import findall
-
 from structlog import get_logger, stdlib
 
 logger: stdlib.BoundLogger = get_logger()
@@ -34,7 +33,9 @@ def find_technologies_and_frameworks(file_contents: str) -> list[str]:
     return technologies_and_frameworks
 
 
-def find_project_technologies_and_frameworks_header(file_contents_lines: list[str]) -> int:
+def find_project_technologies_and_frameworks_header(
+    file_contents_lines: list[str],
+) -> int:
     """Find the index of the Project Technologies and Frameworks header.
 
     Args:
@@ -43,18 +44,19 @@ def find_project_technologies_and_frameworks_header(file_contents_lines: list[st
     Returns:
         int: The index of the header.
     """
-    tech_and_frameworks_header = (
-        (index, line)
+    tech_and_frameworks_header = [
+        index
         for index, line in enumerate(file_contents_lines)
         if "# Project Technologies and Frameworks" in line
-    )
-    if not next(tech_and_frameworks_header, None):
+    ]
+    if not tech_and_frameworks_header:
         return -1
-    logger.debug("Found Project Technologies and Frameworks header", header=list(tech_and_frameworks_header))
-    return next(tech_and_frameworks_header)[0]
+    return tech_and_frameworks_header[-1]
 
 
-def find_table_data_start_index(header_index: int, file_contents_lines: list[str]) -> int:
+def find_table_data_start_index(
+    header_index: int, file_contents_lines: list[str]
+) -> int:
     """Find the index of the start of the table data.
 
     Args:
@@ -84,4 +86,5 @@ def find_markdown_badges(line_contents: str) -> list[str]:
     badge_matches = findall(r"!\[(.*?)\]", line_contents)
     if not badge_matches:
         return []
+    logger.debug("Found badges", badges=badge_matches)
     return badge_matches

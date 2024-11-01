@@ -18,6 +18,10 @@ run-with-defaults:
 unit-test:
     poetry run pytest application --cov=. --cov-report=xml
 
+# Runs unit tests with debug
+unit-test-debug:
+    poetry run pytest application --cov=. --cov-report=xml -vv
+
 # ------------------------------------------------------------------------------
 # Cleaning Commands
 # ------------------------------------------------------------------------------

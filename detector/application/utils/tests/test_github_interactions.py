@@ -33,7 +33,10 @@ def test_scrape_technologies(mock_find_technologies_and_frameworks: MagicMock) -
     # Act
     response = scrape_technologies(mock_repository)
     # Assert
-    assert response == mock_find_technologies_and_frameworks.return_value
+    assert response == {
+        "project_name": "Test3/Test4",
+        "technologies_and_frameworks": mock_find_technologies_and_frameworks.return_value,
+    }
 
 
 def test_scrape_technologies_no_files_found() -> None:
@@ -43,4 +46,7 @@ def test_scrape_technologies_no_files_found() -> None:
     # Act
     response = scrape_technologies(mock_repository)
     # Assert
-    assert response == []
+    assert response == {
+        "project_name": "Test3/Test4",
+        "technologies_and_frameworks": [],
+    }
