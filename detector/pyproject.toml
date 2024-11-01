@@ -73,4 +73,5 @@ convention = "google" # Use Google docstring convention.
 known-first-party = ["application"]
 
 [tool.vulture]
-ignore_names = ["side_effect"]
+ignore_names = ["side_effect", "project_name"]
+ignore_decorators = ["dataclass"]

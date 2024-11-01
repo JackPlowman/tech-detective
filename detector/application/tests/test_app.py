@@ -19,4 +19,4 @@ def test_generate_tech_report(
     # Assert
     mock_retrieve_repositories.assert_called_once_with()
     mock_scrape_technologies.assert_called_once_with(tech_detective)
-    mock_generate_output_file.assert_called_once_with(mock_scrape_technologies.return_value)
+    mock_generate_output_file.assert_called_once_with([mock_scrape_technologies.return_value])
