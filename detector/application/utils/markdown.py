@@ -48,8 +48,9 @@ def find_project_technologies_and_frameworks_header(file_contents_lines: list[st
         for index, line in enumerate(file_contents_lines)
         if "# Project Technologies and Frameworks" in line
     )
-    if not tech_and_frameworks_header:
+    if not next(tech_and_frameworks_header, None):
         return -1
+    logger.debug("Found Project Technologies and Frameworks header", header=list(tech_and_frameworks_header))
     return next(tech_and_frameworks_header)[0]
 
 

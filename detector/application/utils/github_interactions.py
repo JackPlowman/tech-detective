@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from os import getenv
+from typing import TYPE_CHECKING
 
 from github import Github, GithubException, PaginatedList, Repository
 from structlog import get_logger, stdlib
 
 from .markdown import find_technologies_and_frameworks
+
+if TYPE_CHECKING:
+    from .types import ProjectTechnologiesAndFrameworks
 
 logger: stdlib.BoundLogger = get_logger()
 
@@ -27,15 +31,19 @@ def retrieve_repositories() -> PaginatedList[Repository]:
     return repositories
 
 
-def scrape_technologies(repository: Repository) -> list[str]:
+def scrape_technologies(repository: Repository) -> ProjectTechnologiesAndFrameworks:
     """Scrape the technologies used in a repository.
 
     Args:
         repository (Repository): The repository to scrape.
 
     Returns:
-        list[str]: The list of technologies used in the repository.
+        ProjectTechnologiesAndFrameworks: The project technologies and frameworks.
     """
+    project_technologies_and_frameworks: ProjectTechnologiesAndFrameworks = {
+        "project_name": repository.full_name,
+        "technologies_and_frameworks": [],
+    }
     expected_files = [
         "README.md",
         "PROJECT_TECHNOLOGIES.md",
@@ -44,8 +52,11 @@ def scrape_technologies(repository: Repository) -> list[str]:
         try:
             file = repository.get_contents(expected_file)
             logger.debug("Found file", file=file.name, repository=repository.full_name)
-            return find_technologies_and_frameworks(file.decoded_content.decode())
+            project_technologies_and_frameworks["technologies_and_frameworks"] = find_technologies_and_frameworks(
+                file.decoded_content.decode()
+            )
+            return project_technologies_and_frameworks  # noqa: TRY300
         except GithubException:
             logger.debug("No file found", repository=repository.full_name)
     logger.debug("No Readme files found", repository=repository.full_name)
-    return []
+    return project_technologies_and_frameworks
