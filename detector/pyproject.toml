@@ -74,3 +74,4 @@ known-first-party = ["application"]
 
 [tool.vulture]
 ignore_names = ["side_effect"]
+ignore_decorators = ["dataclass"]
