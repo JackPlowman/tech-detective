@@ -14,6 +14,7 @@ def generate_tech_report() -> None:
     tech_report = summarise_tech_report(technologies_and_frameworks)
     generate_output_file(tech_report)
 
+
 def summarise_tech_report(technologies_and_frameworks: list[ProjectTechnologiesAndFrameworks]) -> TechReport:
     """Summarise the technologies used in the repository.
 
