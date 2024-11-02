@@ -19,4 +19,4 @@ class TechReport(TypedDict):
     """TypedDict for the technology report."""
 
     summary: list[SummaryOfTechnologiesAndFrameworks]
-    technologies: list[ProjectTechnologiesAndFrameworks]
+    repositories: list[ProjectTechnologiesAndFrameworks]
