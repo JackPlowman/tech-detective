@@ -18,5 +18,8 @@
   "explorer.fileNesting.patterns": {
     "pyproject.toml": "__init__.py, poetry.lock, coverage.xml, .coverage, .gitignore",
     "package.json": "package-lock.json, eslint.config.js, astro.config.mjs, .prettierrc.mjs, .gitignore"
-  }
+  },
+  "python.testing.pytestArgs": ["detector"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }

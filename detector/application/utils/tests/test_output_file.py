@@ -14,8 +14,6 @@ def test_generate_output_file() -> None:
     # Assert
     with Path.open("../project_technologies_and_frameworks.json") as file:
         file_contents = file.read()
-    assert (
-        file_contents == '{"repositories": ["TypeScript", "Astro", "Python", "Poetry", "Dependabot", "GitHub Actions"]}'
-    )
+    assert file_contents == '["TypeScript", "Astro", "Python", "Poetry", "Dependabot", "GitHub Actions"]'
     # Cleanup
     Path("../project_technologies_and_frameworks.json").unlink()

@@ -70,8 +70,8 @@ dummy-variable-rgx = "(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 convention = "google" # Use Google docstring convention.
 
 [tool.ruff.lint.isort]
-known-first-party = ["application"]
+known-first-party = ["application", "detector"]
 
 [tool.vulture]
-ignore_names = ["side_effect", "project_name"]
+ignore_names = ["side_effect", "project_name", "technologies"]
 ignore_decorators = ["dataclass"]

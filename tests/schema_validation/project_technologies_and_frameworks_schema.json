@@ -3,6 +3,23 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "summary": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "technology": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            }
+          },
+          "required": ["technology", "count"]
+        }
+      ]
+    },
     "repositories": {
       "type": "array",
       "items": [
@@ -22,5 +39,5 @@
       ]
     }
   },
-  "required": ["repositories"]
+  "required": ["summary", "repositories"]
 }

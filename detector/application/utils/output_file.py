@@ -1,16 +1,14 @@
 from json import dump
 from pathlib import Path
 
-from .types import ProjectTechnologiesAndFrameworks
+from .types import TechReport
 
 
-def generate_output_file(project_technologies_and_frameworks: list[ProjectTechnologiesAndFrameworks]) -> None:
-    """Generate the output jsonfile.
+def generate_output_file(tech_report: TechReport) -> None:
+    """Generate the output json file.
 
     Args:
-        project_technologies_and_frameworks (list[ProjectTechnologiesAndFrameworks]):
-            The list of project technologies and frameworks.
+        tech_report (TechReport): The technology report.
     """
-    file_content = {"repositories": project_technologies_and_frameworks}
     with Path.open("../project_technologies_and_frameworks.json", "w") as output_file:
-        dump(file_content, output_file)
+        dump(tech_report, output_file)
