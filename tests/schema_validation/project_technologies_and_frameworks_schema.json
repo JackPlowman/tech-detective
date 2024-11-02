@@ -17,10 +17,7 @@
               "items": {}
             }
           },
-          "required": [
-            "project_name",
-            "technologies_and_frameworks"
-          ]
+          "required": ["project_name", "technologies_and_frameworks"]
         }
       ]
     }
