@@ -3,6 +3,26 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "summary": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "technology": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "technology",
+            "count"
+          ]
+        }
+      ]
+    },
     "repositories": {
       "type": "array",
       "items": [
@@ -17,10 +37,16 @@
               "items": {}
             }
           },
-          "required": ["project_name", "technologies_and_frameworks"]
+          "required": [
+            "project_name",
+            "technologies_and_frameworks"
+          ]
         }
       ]
     }
   },
-  "required": ["repositories"]
+  "required": [
+    "summary",
+    "repositories"
+  ]
 }

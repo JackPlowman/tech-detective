@@ -48,7 +48,7 @@ def test_generate_tech_report(
                     {"technology": "React", "count": 1},
                     {"technology": "Node.js", "count": 1},
                 ],
-                "technologies": [
+                "repositories": [
                     {"technologies_and_frameworks": ["Python", "Django", "Docker"]},
                     {"technologies_and_frameworks": ["Python", "Flask"]},
                     {"technologies_and_frameworks": ["JavaScript", "React", "Node.js"]},
@@ -70,7 +70,7 @@ def test_generate_tech_report(
                     {"technology": "JavaScript", "count": 1},
                     {"technology": "Angular", "count": 1},
                 ],
-                "technologies": [
+                "repositories": [
                     {"technologies_and_frameworks": ["Java", "Spring"]},
                     {"technologies_and_frameworks": ["Java", "Hibernate"]},
                     {"technologies_and_frameworks": ["JavaScript", "Angular"]},

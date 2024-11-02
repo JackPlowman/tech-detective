@@ -33,4 +33,4 @@ def summarise_tech_report(technologies_and_frameworks: list[ProjectTechnologiesA
     summary = [{"technology": technology, "count": count} for technology, count in summary.items()]
     summary.sort(key=lambda x: x["count"], reverse=True)
 
-    return {"summary": summary, "technologies": technologies_and_frameworks}
+    return {"summary": summary, "repositories": technologies_and_frameworks}
