@@ -9,14 +9,15 @@
         {
           "type": "object",
           "properties": {
-            "full_name": {
+            "project_name": {
               "type": "string"
             },
-            "project_technologies_and_frameworks": {
-              "type": "array"
+            "technologies_and_frameworks": {
+              "type": "array",
+              "items": {}
             }
           },
-          "required": ["full_name", "project_technologies_and_frameworks"]
+          "required": ["project_name", "technologies_and_frameworks"]
         }
       ]
     }
