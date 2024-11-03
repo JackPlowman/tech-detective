@@ -23,4 +23,3 @@ def test_sitemap_0_xml() -> None:
     # Assert
     sitemap_element = fromstring(response.content)
     assert sitemap_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
-    # Check that the sitemap contains the expected number of URLs
