@@ -64,19 +64,13 @@ jobs:
 
       - name: Check Python Code Format (Ruff)
         run: just detector::ruff-format
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
       - name: Check Python Code Quality (Ruff)
         run: just detector::ruff-lint
         env:
-          RUFF_OUTPUT_FORMAT: "sarif"
-          RUFF_OUTPUT_FILE: "ruff-results.sarif"
-        continue-on-error: true
-
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.27.0
-        with:
-          sarif_file: detector/ruff-results.sarif
-          wait-for-processing: true
+          RUFF_OUTPUT_FORMAT: "github"
 
       - name: Check Python Code for Dead Code (Vulture)
         run: just detector::vulture
@@ -95,19 +89,13 @@ jobs:
 
       - name: Check Python Code Format (Ruff)
         run: just tests::ruff-format
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
       - name: Check Python Code Quality (Ruff)
         run: just tests::ruff-lint
         env:
-          RUFF_OUTPUT_FORMAT: "sarif"
-          RUFF_OUTPUT_FILE: "ruff-results.sarif"
-        continue-on-error: true
-
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3.27.0
-        with:
-          sarif_file: tests/ruff-results.sarif
-          wait-for-processing: true
+          RUFF_OUTPUT_FORMAT: "github"
 
   check-typescript-code-format-and-quality:
     name: Check TypeScript Code Format and Quality
