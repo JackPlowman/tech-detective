@@ -24,6 +24,9 @@ eslint-check:
 eslint-fix:
     npx eslint . --fix
 
+eslint-with-sarif:
+    npx eslint . --config eslint.config.js --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
+
 # ------------------------------------------------------------------------------
 # Prettier
 # ------------------------------------------------------------------------------
