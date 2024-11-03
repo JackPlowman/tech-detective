@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Python Dependencies
         uses: ./.github/actions/setup-python-dependencies
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Download Detector Output File
         uses: actions/download-artifact@v4.1.8
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
 
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
 
