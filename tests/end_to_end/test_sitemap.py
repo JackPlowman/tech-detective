@@ -9,6 +9,7 @@ def test_sitemap_index_xml() -> None:
     # Act
     response = get(f"{PROJECT_URL}/sitemap-index.xml", timeout=2)
     # Assert
+    assert response.status_code == 200
     sitemap_index_element = fromstring(response.content)
     assert sitemap_index_element.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}sitemapindex"
     sitemap_element = sitemap_index_element.find("{http://www.sitemaps.org/schemas/sitemap/0.9}sitemap")
