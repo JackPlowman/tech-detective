@@ -104,7 +104,16 @@ jobs:
         run: just dashboard::prettier-check
 
       - name: Run ESLint
-        run: just dashboard::eslint-check
+        env:
+          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
+        run: just dashboard::eslint-with-sarif
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.0
+        with:
+          sarif_file: dashboard/eslint-results.sarif
+          wait-for-processing: true
 
   check-markdown-links:
     name: Check Markdown links
