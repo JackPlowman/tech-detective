@@ -78,7 +78,7 @@ jobs:
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-        run: just dashboard::eslint
+        run: just dashboard::eslint-with-sarif
         continue-on-error: true
 
       - name: Upload analysis results to GitHub

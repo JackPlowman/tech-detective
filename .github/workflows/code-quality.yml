@@ -112,7 +112,7 @@ jobs:
         run: just dashboard::prettier-check
 
       - name: Run ESLint
-        run: just dashboard::eslint-with-sarif
+        run: just dashboard::eslint
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3.27.0
