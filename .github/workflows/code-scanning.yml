@@ -1,0 +1,88 @@
+name: "Code Scanning"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+  security-events: write
+
+jobs:
+  upload-python-scanner-results:
+    name: Upload Python Ruff Scanner Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python Dependencies
+        uses: ./.github/actions/setup-python-dependencies
+
+      - name: Check Python Code Quality (Ruff)
+        run: just detector::ruff-lint
+        env:
+          RUFF_OUTPUT_FORMAT: "sarif"
+          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.0
+        with:
+          sarif_file: detector/ruff-results.sarif
+          wait-for-processing: true
+
+  upload-test-python-scanner-results:
+    name: Upload Test Python Ruff Scanner Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python Dependencies
+        uses: ./.github/actions/setup-test-dependencies
+
+      - name: Check Python Code Quality (Ruff)
+        run: just tests::ruff-lint
+        env:
+          RUFF_OUTPUT_FORMAT: "sarif"
+          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.0
+        with:
+          sarif_file: tests/ruff-results.sarif
+          wait-for-processing: true
+
+  upload-typescript-scanner-results:
+    name: Upload TypeScript ESLint Scanner Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup TypeScript Dependencies
+        uses: ./.github/actions/setup-typescript-dependencies
+
+      - name: Run ESLint
+        env:
+          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
+        run: just dashboard::eslint
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.0
+        with:
+          sarif_file: dashboard/eslint-results.sarif
+          wait-for-processing: true

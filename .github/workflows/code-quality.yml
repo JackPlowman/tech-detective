@@ -10,7 +10,6 @@ permissions:
   contents: read
   packages: read
   statuses: write
-  security-events: write
 
 jobs:
   check-code-quality:
@@ -113,10 +112,7 @@ jobs:
         run: just dashboard::prettier-check
 
       - name: Run ESLint
-        env:
-          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: just dashboard::eslint-with-sarif
-        continue-on-error: true
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3.27.0
